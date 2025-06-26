@@ -6,7 +6,5 @@ const cookieOptions = {
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'strict',
 };
-expires: new Date(Date.now() + expiresInDays * 24 * 60 * 60 * 1000),
-module.exports = cookieOptions;
 
-
+export default cookieOptions;

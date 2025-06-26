@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+//Sale.js
+import mongoose from 'mongoose';
 
 const SaleSchema = new mongoose.Schema({
   // Reference to Project
@@ -36,10 +37,11 @@ const SaleSchema = new mongoose.Schema({
   // Sales Representative
   salesperson: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'User'
   },
-
+  description:{
+    type:String
+  },
   // System Fields
   createdAt: {
     type: Date,
@@ -55,4 +57,5 @@ SaleSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = mongoose.model('Sale', SaleSchema);
+
+export default mongoose.model('Sale', SaleSchema);

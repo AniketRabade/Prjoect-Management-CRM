@@ -1,4 +1,5 @@
-const { verifyToken } = require('../config/jwt');
+import User from '../models/User.js';
+import { verifyToken } from '../config/jwt.js';
 
 const protect = async (req, res, next) => {
   let token;
@@ -8,6 +9,7 @@ const protect = async (req, res, next) => {
   }
 
   if (!token) {
+    console.log('No token found in cookies');
     return res.status(401).json({ success: false, message: 'Not authorized to access this route' });
   }
 
@@ -16,6 +18,7 @@ const protect = async (req, res, next) => {
     req.user = await User.findById(decoded.id);
     next();
   } catch (err) {
+    console.error('Token verification failed:', err);
     return res.status(401).json({ success: false, message: 'Not authorized to access this route' });
   }
 };
@@ -32,4 +35,4 @@ const authorize = (...roles) => {
   };
 };
 
-module.exports = { protect, authorize };
+export { protect, authorize };

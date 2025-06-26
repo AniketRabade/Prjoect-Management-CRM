@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-
+//Client.js
+import mongoose from 'mongoose';
 const ClientSchema = new mongoose.Schema({
   name: {
-    type: String,
-    required: [true, "Client name is required"],
-    trim: true,
-    maxlength: [100, "Name cannot exceed 100 characters"]
-  },
+      type: String,
+      required: [true, "Please provide a client name"],
+      trim: true,
+      maxlength: [50, "Name cannot exceed 50 characters"],
+    },
   email: {
     type: String,
     trim: true,
@@ -30,4 +30,5 @@ const ClientSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Client', ClientSchema);
+
+export default mongoose.model('Client', ClientSchema);

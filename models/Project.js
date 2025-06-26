@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+//Project.js
+import mongoose from 'mongoose';
 
 const ProjectSchema = new mongoose.Schema({
   // Core Project Info
-  name: {
+  projectName: {
     type: String,
     required: [true, "Project name is required"],
     trim: true,
@@ -11,7 +12,7 @@ const ProjectSchema = new mongoose.Schema({
   client: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Client',
-    required: true
+    // required: true
   },
 
   // Timeline
@@ -84,12 +85,11 @@ const ProjectSchema = new mongoose.Schema({
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    // required: true
   },
 }, { 
   timestamps: true,
 });
 
 
-
-module.exports = mongoose.model('Project', ProjectSchema);
+export default mongoose.model('Project', ProjectSchema);
